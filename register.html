@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- This is the minified production version of parse js -->
+    <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+    <style>
+        body {
+            background-color: rgb(194, 193, 193);
+        }
+        
+        .mmm {
+            background-color: rgb(247, 246, 246);
+            width: 500px;
+            margin-left: 35.35%;
+            height: 350px;
+            border-radius: 15px;
+        }
+        
+        h1 {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .main {
+            text-align: center;
+        }
+        
+        .rr {
+            height: 40px;
+            width: 400px;
+        }
+        
+        .sub {
+            height: 40px;
+            width: 400px;
+        }
+        
+        .img {
+            height: 145px;
+            text-align: center;
+            margin-top: 130px;
+        }
+        
+        .img-div {
+            margin-left: 42.8%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="img-div">
+        <img class="img" src="https://kantiancheng.github.io/tool/logo.png">
+    </div>
+    <div class="mmm">
+
+        <h1>注册</h1>
+        <div class="main">
+            <input class="rr" id="username" type="text" placeholder="用户名" /><br><br>
+            <input class="rr" id="email" type="email" placeholder="电子邮箱" /><br><br>
+            <input class="rr" id="password" type="password" placeholder="密码" /><br><br>
+            <button class="sub" id="createButton">创建用户</button>
+        </div>
+    </div>
+</body>
+<script>
+    // Initialize Parse
+    Parse.initialize("zfIhsg3U0gapI3cxsu5UgVe5GSsZfjQ7nli6ouIv", "CDrCdGsD9BuWW6qYPQCIaJqhPELB8U7MLpHwiWh9"); //API
+    Parse.serverURL = "https://parseapi.back4app.com/";
+
+    // Create a new User
+    async function createParseUser() {
+        // Creates a new Parse "User" object, which is created by default in your Parse app
+        let user = new Parse.User();
+        // Set the input values to the new "User" object
+        user.set("username", document.getElementById("username").value);
+        user.set("email", document.getElementById("email").value);
+        user.set("password", document.getElementById("password").value);
+        try {
+            // Call the save method, which returns the saved object if successful
+            user = await user.save();
+            if (user !== null) {
+                // Notify the success by getting the attributes from the "User" object, by using the get method (the id attribute needs to be accessed directly, though)
+                alert(
+                    `New object created with success! ObjectId: ${
+              user.id
+            }, ${user.get("username")}`
+                );
+            }
+        } catch (error) {
+            alert(`Error: ${error.message}`);
+        }
+    }
+
+    // Add on click listener to call the create parse user function
+    document.getElementById("createButton").addEventListener("click", async function() {
+        createParseUser();
+    });
+</script>
+<script>
+    //设备识别
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        window.location = "https://kantiancheng.github.io/tool/register.html";
+    }
+</script>
+
+</html>
