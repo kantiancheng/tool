@@ -15,34 +15,25 @@ src="https://npmcdn.com/parse/dist/parse.min.js"
 <button id="retrieveButton">Retrieve User</button>
 </body>
 <script>
-// Initialize Parse
-Parse.initialize("zfIhsg3U0gapI3cxsu5UgVe5GSsZfjQ7nli6ouIv", "CDrCdGsD9BuWW6qYPQCIaJqhPELB8U7MLpHwiWh9"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
-Parse.serverURL = "https://parseapi.back4app.com/";
+async function retrievePlayer() {
+//Create your Parse Query, and define the class it will be searched
+const query = new Parse.Query("SoccerPlayers");
 
-// Retrieve an object (note, the object should be created before reading)
 
-async function retrievePlayer() { 
-//Create your Parse Query, and define the class it will be searched 
-const soccerPlayers = new Parse.Query("SoccerPlayers"); 
+try {
+//Query the soccerPlayers object using the objectId you've copied
+const player = await query.get("G2f4Si89bE");
+//access each object propertie using the get method
+const name = player.get("namePlayer");
+const email = player.get("emailContact");
+const birth = player.get("yearOfBirth");
+const attributes = player.get("attributes");
 
-try { 
-//Query the soccerPlayers object using the objectId you've copied 
-const player = await query.get("G2f4Si89bE"); 
-//access each object properties using the get method 
-const name = player.get("namePlayer"); 
-const email = player.get("emailContact"); 
-const birth = player.get("yearOfBirth"); 
-const attributes = player.get("attributes"); 
 
-alert('Name: ' ${name}', email: ' ${email}',birth: ' ${birth}', attributes: '${attributes}); 
-} catch (error) { 
-alert(`Failed to retrieve the object, with error code: ${error.message}`); 
-} 
+alert(`Name: ${name}, email: ${email}, birth: ${birth}, attributes: ${attributes}`);
+} catch (error) {
+alert(`Failed to retrieve the object, with error code: ${error.message}`);
 }
-
-// Add on click listener to call the create parse user function
-document.getElementById("retrieveButton").addEventListener("click", async function () {
-retrievePlayer();
-});
+}
 </script>
 </html>
