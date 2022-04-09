@@ -1,0 +1,8 @@
+<input type="text" name="userName" id="userName" placeholder="用户名">
+<input type="button" onclick="b()">
+<script type="text/javascript">
+    function b() {
+        var ad = document.getElementById('userName').value;
+        window.location.href = `b.html?username=${ad}`
+    }
+</script>
