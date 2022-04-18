@@ -128,7 +128,7 @@
             // Do something with the returned Parse.Object values
             for (let i = 0; i < results.length; i++) {
                 const object = results[i];
-                //object.id;
+                var uid = object.id;
                 var Password = object.get("cpassword");
                 var rPassword = document.getElementById("password").value;
                 if (rPassword == Password) {
