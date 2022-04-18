@@ -2,9 +2,15 @@
 <html>
 
 <head>
+
     <meta charset="utf-8" />
     <!-- This is the minified production version of parse js -->
     <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+    <script>
+        // Initialize Parse
+        Parse.initialize("zfIhsg3U0gapI3cxsu5UgVe5GSsZfjQ7nli6ouIv", "CDrCdGsD9BuWW6qYPQCIaJqhPELB8U7MLpHwiWh9"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
+        Parse.serverURL = "https://parseapi.back4app.com/";
+    </script>
     <style>
         body {
             background-color: rgb(194, 193, 193);
@@ -14,7 +20,7 @@
             background-color: rgb(247, 246, 246);
             width: 500px;
             margin-left: 35.35%;
-            height: 400px;
+            height: 800px;
             border-radius: 15px;
         }
         
@@ -32,36 +38,82 @@
             width: 400px;
         }
         
+        .rrr {
+            height: 90px;
+            width: 90px;
+        }
+        
         .sub {
             height: 40px;
-            width: 400px;
+            width: 300px;
+            margin-top: 5px;
         }
         
-        .img {
-            height: 145px;
-            text-align: center;
-            margin-top: 130px;
+        .subb {
+            height: 40px;
+            width: 240px;
         }
         
-        .img-div {
-            margin-left: 42.8%;
+        .hi {
+            height: 10px;
         }
     </style>
+    <script>
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i].trim();
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
+    <script>
+        async function retrieveUser() {
+            var un = getCookie("username");
+            //Create your Parse Query, and define the class it will be searched
+            const query = new Parse.Query("User");
+
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + d.toGMTString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
+
+            try {
+                //Query the soccerPlayers object using the player name you have copied
+                query.equalTo("username", document.getElementById("username").value);
+                const results = await query.find();
+                // Do something with the returned Parse.Object values
+                for (let i = 0; i < results.length; i++) {
+                    const object = results[i];
+                    var uid = object.id;
+                    var Password = object.get("cpassword");
+                    var rPassword = document.getElementById("password").value;
+                }
+            } catch (error) {
+                alert(`Failed to retrieve the object, with error code: ${error.message}`);
+            }
+        }
+    </script>
 </head>
 
-<body>
-    <div class="img-div">
-        <img class="img" src="https://kantiancheng.github.io/tool/logo.png">
-    </div>
+<body onload="retrieveUser()">
     <div class="mmm">
-
-        <h1>注册</h1>
+        <div class="hi"></div>
+        <h1>个人主页</h1>
         <div class="main">
+            <img class="rrr" src="https://parsefiles.back4app.com/zfIhsg3U0gapI3cxsu5UgVe5GSsZfjQ7nli6ouIv/32183d941aa18912110bdc1cf5202cac_head%20portrait.jpg"><br><button class="subb" id="createButton">修改头像</button><br><br>
             <input class="rr" id="username" type="text" placeholder="用户名" /><br><br>
             <input class="rr" id="email" type="email" placeholder="电子邮箱" /><br><br>
-            <input class="rr" id="password" type="password" placeholder="密码" /><br><br>
-            <input class="rr" id="cpassword" type="password" placeholder="密码" /><br><br>
-            <button class="sub" id="createButton">创建用户</button>
+            <input class="rr" id="email" type="email" placeholder="性别" /><button class="sub" id="createButton">修改性别</button><br><br>
+            <input class="rr" id="email" type="email" placeholder="个人简介" /><button class="sub" id="createButton">写简介</button><br><br>
+            <input class="rr" id="cpassword" type="password" placeholder="密码" /><button class="sub" id="createButton">修改密码</button><br><br>
+            <button class="sub" id="createButton">返回主页</button><br><br>
         </div>
     </div>
 </body>
