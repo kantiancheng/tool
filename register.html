@@ -59,8 +59,9 @@
         <div class="main">
             <input class="rr" id="username" type="text" placeholder="用户名" /><br><br>
             <input class="rr" id="email" type="email" placeholder="电子邮箱" /><br><br>
+            <input class="rr" id="cemail" type="email" placeholder="确认电子邮箱" /><br><br>
             <input class="rr" id="password" type="password" placeholder="密码" /><br><br>
-            <input class="rr" id="cpassword" type="password" placeholder="密码" /><br><br>
+            <input class="rr" id="cpassword" type="password" placeholder="确认密码" /><br><br>
             <button class="sub" id="createButton">创建用户</button>
         </div>
     </div>
@@ -77,6 +78,7 @@
         // Set the input values to the new "User" object
         user.set("username", document.getElementById("username").value);
         user.set("email", document.getElementById("email").value);
+        user.set("cemail", document.getElementById("cemail").value);
         user.set("password", document.getElementById("password").value);
         user.set("cpassword", document.getElementById("cpassword").value);
         try {
