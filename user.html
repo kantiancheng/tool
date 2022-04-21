@@ -2,7 +2,6 @@
 <html>
 
 <head>
-    <title>用户信息</title>
     <meta charset="utf-8" />
     <!-- This is the minified production version of parse js -->
     <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
@@ -111,23 +110,23 @@
             <input class="rr" id="username" type="text" placeholder="用户名(注意大小写)" /><br><br>
             <input class="rr" id="password" type="password" placeholder="密码(注意大小写)" /><br><br>
             <div id="a" class="a">
-                <h1 id="tuser">用户名:</h1>
+                <h1 id="tuser"></h1>
                 <h1 id="user"></h1>
             </div>
             <div id="a" class="a">
-                <h1 id="temail">电子邮件:</h1>
+                <h1 id="temail"></h1>
                 <h1 id="email"></h1>
             </div>
             <div id="a" class="a">
-                <h1 id="tsex">性别:</h1>
+                <h1 id="tsex"></h1>
                 <h1 id="sex"></h1>
             </div>
             <div id="a" class="a">
-                <h1 id="tpass">密码:</h1>
+                <h1 id="tpass"></h1>
                 <h1 id="pass"></h1>
             </div>
             <div id="a" class="a">
-                <h1 id="tintro">个人简介:</h1>
+                <h1 id="tintro"></h1>
                 <h1 id="intro"></h1>
             </div>
             <button class="sub" id="createButton" onclick="retrieveUser()">登录</button>
@@ -210,6 +209,11 @@
                     document.getElementById("sex").style.setProperty("font-size", "25px");
                     document.getElementById("intro").style.setProperty("font-size", "25px");
                     document.getElementById("pass").style.setProperty("font-size", "25px");
+                    document.getElementById('tuser').innerHTML = "用户名:";
+                    document.getElementById('temail').innerHTML = "电子邮件:";
+                    document.getElementById('tsex').innerHTML = "性别:";
+                    document.getElementById('tintro').innerHTML = "密码:";
+                    document.getElementById('tpass').innerHTML = "个人简介:";
                     /*  document.getElementById('tuser').style.setProperty("float", "left");
                       document.getElementById('temail').style.setProperty("float", "left");
                       document.getElementById('tsex').style.setProperty("float", "left");
@@ -237,118 +241,3 @@
 
 
 </html>
-<style>
-    input {
-        width: 125px;
-        height: 30px;
-        font-size: 400%;
-        text-align: center;
-    }
-    
-    body {
-        background-color: #c2c1c1;
-    }
-    
-    .mmm {
-        background-color: rgb(247, 246, 246);
-        width: 95.4%;
-        margin-left: 2.35%;
-        height: 1309px;
-        border-radius: 15px;
-    }
-    
-    h1 {
-        margin-top: 30px;
-        text-align: center;
-        font-size: 100px;
-        color: #393939;
-    }
-    
-    .main {
-        text-align: center;
-    }
-    
-    .main-div {
-        height: 30px;
-    }
-    
-    .rr {
-        height: 120px;
-        width: 90%;
-        border-radius: 15px;
-    }
-    
-    .sub {
-        height: 120px;
-        width: 90%;
-        border-radius: 15px;
-        font-size: 400%;
-    }
-    
-    .img {
-        height: 300px;
-        text-align: center;
-        margin-top: 130px;
-    }
-    
-    .img-div {
-        margin-left: 24.15%;
-        margin-bottom: 40px;
-    }
-    
-    .h1-div {
-        height: 50px;
-    }
-    
-    @media screen and (min-height:1024px) {
-        .img {
-            display: none;
-        }
-        input {
-            width: 125px;
-            height: 30px;
-            font-size: 400%;
-            text-align: center;
-        }
-        body {
-            background-color: #c2c1c1;
-        }
-        .mmm {
-            background-color: rgb(247, 246, 246);
-            width: 95.4%;
-            margin-left: 2.35%;
-            height: 1309px;
-            border-radius: 15px;
-        }
-        h1 {
-            margin-top: 30px;
-            text-align: center;
-            font-size: 100px;
-            color: #393939;
-        }
-        .main {
-            text-align: center;
-        }
-        .main-div {
-            height: 30px;
-        }
-        .rr {
-            height: 120px;
-            width: 90%;
-            border-radius: 15px;
-        }
-        .sub {
-            height: 120px;
-            width: 90%;
-            border-radius: 15px;
-            font-size: 400%;
-        }
-        .img-div {
-            margin-left: 24.15%;
-            margin-bottom: 40px;
-        }
-        .h1-div {
-            height: 50px;
-        }
-    }
-</style>
