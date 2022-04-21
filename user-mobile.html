@@ -12,9 +12,10 @@
         Parse.serverURL = "https://parseapi.back4app.com/";
     </script>
     <style>
-        .top{
+        .top {
             height: 30px;
         }
+        
         input {
             width: 125px;
             height: 30px;
@@ -183,23 +184,23 @@
             <input class="rr" id="username" type="text" placeholder="用户名(注意大小写)" /><br><br>
             <input class="rr" id="password" type="password" placeholder="密码(注意大小写)" /><br><br>
             <div id="a" class="a">
-                <h1 id="tuser">用户名:</h1>
+                <h1 id="tuser"></h1>
                 <h1 id="user"></h1>
             </div>
             <div id="a" class="a">
-                <h1 id="temail">电子邮件:</h1>
+                <h1 id="temail"></h1>
                 <h1 id="email"></h1>
             </div>
             <div id="a" class="a">
-                <h1 id="tsex">性别:</h1>
+                <h1 id="tsex"></h1>
                 <h1 id="sex"></h1>
             </div>
             <div id="a" class="a">
-                <h1 id="tpass">密码:</h1>
+                <h1 id="tpass"></h1>
                 <h1 id="pass"></h1>
             </div>
             <div id="a" class="a">
-                <h1 id="tintro">个人简介:</h1>
+                <h1 id="tintro"></h1>
                 <h1 id="intro"></h1>
             </div>
             <button class="sub" id="createButton" onclick="retrieveUser()">登录</button>
@@ -282,6 +283,11 @@
                     document.getElementById("sex").style.setProperty("font-size", "55px");
                     document.getElementById("intro").style.setProperty("font-size", "55px");
                     document.getElementById("pass").style.setProperty("font-size", "55px");
+                    document.getElementById('tuser').innerHTML = "用户名:";
+                    document.getElementById('temail').innerHTML = "电子邮件:";
+                    document.getElementById('tsex').innerHTML = "性别:";
+                    document.getElementById('tintro').innerHTML = "密码:";
+                    document.getElementById('tpass').innerHTML = "个人简介:";
                     /*  document.getElementById('tuser').style.setProperty("float", "left");
                       document.getElementById('temail').style.setProperty("float", "left");
                       document.getElementById('tsex').style.setProperty("float", "left");
