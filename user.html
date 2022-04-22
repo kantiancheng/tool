@@ -21,6 +21,7 @@
             margin-left: 35.35%;
             height: 400px;
             border-radius: 15px;
+            margin: 0 auto;
         }
         
         h1 {
@@ -131,6 +132,7 @@
             </div>
             <button class="sub" id="createButton" onclick="retrieveUser()">登录</button>
             <button class="sub" onclick="window.open('https://kantiancheng.github.io/tool/index.html')">返回主页</button>
+            <!-- <button class="sub" id="createButton" onclick="logout()">退出登录</button>-->
         </div>
     </div>
 </body>
@@ -149,6 +151,11 @@
         </div>
     </div>
 </body>-->
+<script>
+    function logout() {
+        document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
+</script>
 <script>
     async function retrieveUser() {
         var usernamee = document.getElementById("username").value;
@@ -214,6 +221,7 @@
                     document.getElementById('tsex').innerHTML = "性别:";
                     document.getElementById('tintro').innerHTML = "密码:";
                     document.getElementById('tpass').innerHTML = "个人简介:";
+                    setCookie("userID", uid, 1);
                     /*  document.getElementById('tuser').style.setProperty("float", "left");
                       document.getElementById('temail').style.setProperty("float", "left");
                       document.getElementById('tsex').style.setProperty("float", "left");
